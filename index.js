@@ -1,25 +1,36 @@
 require('dotenv').config();
 const { Keystone } = require('@keystonejs/keystone');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
-const { Text, Checkbox, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
+const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
+
 const initialiseData = require('./initial-data');
+const { CategorySchema, ProductSchema, UserSchema } = require('./lists/index');
 
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
-const PROJECT_NAME = 'strands-ecommerce-node';
+const PROJECT_NAME = 'Strands Admin';
 const adapterConfig = {
   mongoUri: process.env.MONGO_URI
 };
 
+const fileAdapter = new CloudinaryAdapter({
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+  apiKey: process.env.CLOUDINARY_KEY,
+  apiSecret: process.env.CLOUDINARY_SECRET,
+  folder: process.env.CLOUDINARY_FOLDER
+});
+
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
+  cookieSecret: process.env.COOKIE_SECRET,
   onConnect: process.env.CREATE_TABLES !== 'true' && initialiseData
 });
 
 // Access control functions
 const userIsAdmin = ({ authentication: { item: user } }) =>
   Boolean(user && user.isAdmin);
+
 const userOwnsItem = ({ authentication: { item: user } }) => {
   if (!user) {
     return false;
@@ -38,34 +49,11 @@ const userIsAdminOrOwner = auth => {
 
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
-keystone.createList('User', {
-  fields: {
-    name: { type: Text },
-    email: {
-      type: Text,
-      isUnique: true
-    },
-    isAdmin: {
-      type: Checkbox,
-      // Field-level access controls
-      // Here, we set more restrictive field access so a non-admin cannot make themselves admin.
-      access: {
-        update: access.userIsAdmin
-      }
-    },
-    password: {
-      type: Password
-    }
-  },
-  // List-level access controls
-  access: {
-    read: access.userIsAdminOrOwner,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-    auth: true
-  }
-});
+keystone.createList('User', UserSchema(access));
+
+keystone.createList('Product', ProductSchema(access, fileAdapter));
+
+keystone.createList('Category', CategorySchema(access));
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
