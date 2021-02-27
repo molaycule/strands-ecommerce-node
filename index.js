@@ -4,11 +4,10 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
-
-const initialiseData = require('./initial-data');
 const { CategorySchema, ProductSchema, UserSchema } = require('./lists/index');
-
+const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+
 const PROJECT_NAME = 'Strands Admin';
 const adapterConfig = {
   mongoUri: process.env.MONGO_URI
