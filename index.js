@@ -4,7 +4,12 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
-const { CategorySchema, ProductSchema, UserSchema } = require('./lists/index');
+const {
+  CategorySchema,
+  ProductSchema,
+  UserSchema,
+  BannerAdSchema
+} = require('./lists/index');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 
@@ -53,6 +58,8 @@ keystone.createList('User', UserSchema(access));
 keystone.createList('Product', ProductSchema(access, fileAdapter));
 
 keystone.createList('Category', CategorySchema(access));
+
+keystone.createList('BannerAd', BannerAdSchema(access, fileAdapter));
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
