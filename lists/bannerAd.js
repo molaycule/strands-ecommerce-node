@@ -1,5 +1,6 @@
 const { Text } = require('@keystonejs/fields');
 const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const BannerAdSchema = (access, fileAdapter) => ({
   fields: {
@@ -34,12 +35,13 @@ const BannerAdSchema = (access, fileAdapter) => ({
   },
   // List-level access controls
   access: {
-    read: access.userIsAdminOrOwner,
+    read: true,
     update: access.userIsAdminOrOwner,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
     auth: true
-  }
+  },
+  plugins: [atTracking()]
 });
 
 module.exports = BannerAdSchema;

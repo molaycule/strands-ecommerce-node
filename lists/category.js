@@ -1,4 +1,5 @@
 const { Text } = require('@keystonejs/fields');
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const CategorySchema = access => ({
   fields: {
@@ -10,12 +11,13 @@ const CategorySchema = access => ({
   },
   // List-level access controls
   access: {
-    read: access.userIsAdminOrOwner,
+    read: true,
     update: access.userIsAdminOrOwner,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
     auth: true
-  }
+  },
+  plugins: [atTracking()]
 });
 
 module.exports = CategorySchema;
