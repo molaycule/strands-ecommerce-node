@@ -6,6 +6,7 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { CloudinaryAdapter } = require('@keystonejs/file-adapters');
 const {
   CategorySchema,
+  TopCategorySchema,
   ProductSchema,
   UserSchema,
   BannerAdSchema
@@ -54,11 +55,9 @@ const userIsAdminOrOwner = auth => {
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
 keystone.createList('User', UserSchema(access));
-
 keystone.createList('Product', ProductSchema(access, fileAdapter));
-
 keystone.createList('Category', CategorySchema(access));
-
+keystone.createList('TopCategory', TopCategorySchema(access, fileAdapter));
 keystone.createList('BannerAd', BannerAdSchema(access, fileAdapter));
 
 const authStrategy = keystone.createAuthStrategy({
