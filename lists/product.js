@@ -1,5 +1,6 @@
 const { Text, Float, Checkbox, Relationship } = require('@keystonejs/fields');
 const { CloudinaryImage } = require('@keystonejs/fields-cloudinary-image');
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const ProductSchema = (access, fileAdapter) => ({
   fields: {
@@ -49,6 +50,15 @@ const ProductSchema = (access, fileAdapter) => ({
           }
         }
       }
+    },
+    facebookLink: {
+      type: Text
+    },
+    twitterLink: {
+      type: Text
+    },
+    instagramLink: {
+      type: Text
     }
   },
   hooks: {
@@ -65,12 +75,13 @@ const ProductSchema = (access, fileAdapter) => ({
   },
   // List-level access controls
   access: {
-    read: access.userIsAdminOrOwner,
+    read: true,
     update: access.userIsAdminOrOwner,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
     auth: true
-  }
+  },
+  plugins: [atTracking()]
 });
 
 module.exports = ProductSchema;
