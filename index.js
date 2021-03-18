@@ -9,7 +9,8 @@ const {
   TopCategorySchema,
   ProductSchema,
   UserSchema,
-  BannerAdSchema
+  BannerAdSchema,
+  ShippingSchema
 } = require('./lists/index');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
@@ -59,6 +60,7 @@ keystone.createList('Product', ProductSchema(access, fileAdapter));
 keystone.createList('Category', CategorySchema(access));
 keystone.createList('TopCategory', TopCategorySchema(access, fileAdapter));
 keystone.createList('BannerAd', BannerAdSchema(access, fileAdapter));
+keystone.createList('Shipping', ShippingSchema(access));
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
