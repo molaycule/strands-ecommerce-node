@@ -4,6 +4,7 @@ const ProductSchema = require('./product');
 const UserSchema = require('./user');
 const BannerAdSchema = require('./bannerAd');
 const ShippingSchema = require('./shipping');
+const CountrySchema = require('./country');
 
 module.exports = {
   CategorySchema,
@@ -11,5 +12,6 @@ module.exports = {
   ProductSchema,
   UserSchema,
   BannerAdSchema,
-  ShippingSchema
+  ShippingSchema,
+  CountrySchema
 };
