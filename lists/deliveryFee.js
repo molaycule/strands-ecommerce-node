@@ -1,7 +1,7 @@
 const { Text, Float, Checkbox, Relationship } = require('@keystonejs/fields');
 const { atTracking } = require('@keystonejs/list-plugins');
 
-const ShippingSchema = access => ({
+const DeliveryFeeSchema = access => ({
   fields: {
     country: {
       type: Relationship,
@@ -18,7 +18,7 @@ const ShippingSchema = access => ({
       defaultValue: 0,
       isRequired: true
     },
-    isShippingAllowed: {
+    isDeliveryAllowed: {
       type: Checkbox,
       defaultValue: true
     }
@@ -34,4 +34,4 @@ const ShippingSchema = access => ({
   plugins: [atTracking()]
 });
 
-module.exports = ShippingSchema;
+module.exports = DeliveryFeeSchema;
