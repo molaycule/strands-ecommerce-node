@@ -81,5 +81,8 @@ module.exports = {
       enableDefaultRoute: true,
       authStrategy
     })
-  ]
+  ],
+  configureExpress: app => {
+    app.set('trust proxy', 1);
+  }
 };
