@@ -5,7 +5,8 @@ const UserSchema = require('./user');
 const BannerAdSchema = require('./bannerAd');
 const DeliveryFeeSchema = require('./deliveryFee');
 const CountrySchema = require('./country');
-const TransactionLogSchema = require('./transactionLog');
+const OrderSchema = require('./order');
+const LineItemSchema = require('./lineItem');
 
 module.exports = {
   CategorySchema,
@@ -15,5 +16,6 @@ module.exports = {
   BannerAdSchema,
   DeliveryFeeSchema,
   CountrySchema,
-  TransactionLogSchema
+  OrderSchema,
+  LineItemSchema
 };

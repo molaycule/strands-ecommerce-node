@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank you for your order ({{orderNumber}})</title>
+</head>
+
+<body>
+
+  <head></head>
+
+  <body style="
+        font-family: Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        color: #616161;
+      ">
+    <table class="wrapper" style="
+          margin: 0;
+          background: #fff;
+          border: 0;
+          width: 100%;
+          text-align: center;
+        ">
+      <tbody>
+        <tr>
+          <td class="content-wrap" style="
+                border: 0;
+                width: 600px;
+                text-align: center;
+                background: #f5f5f5;
+              ">
+            <table class="content" style="
+                  margin: 0 auto;
+                  border: 0;
+                  width: 600px;
+                  text-align: center;
+                ">
+              <tbody>
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px"></td>
+                </tr>
+
+                <tr>
+                  <td class="box" style="background: #fff; padding: 0 25px">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+                      style="margin: 0 auto">
+                      <tbody>
+                        <tr>
+                          <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+                              style="margin: 0 auto">
+                              <tbody>
+                                <tr>
+                                  <td align="center" class="em_hero_td">
+                                    <a href="https://strands.com.ng" target="_blank">
+                                      <img
+                                        src="https://res.cloudinary.com/strands-cloudinary/image/upload/v1616393168/strands-assets/logo_qnszuu.png"
+                                        style="width: 200px; height: auto" />
+                                    </a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td align="center">
+                                    <h1 class="hero-primary" style="
+                                          text-transform: uppercase;
+                                          font-size: 28px;
+                                          color: #c56439;
+                                          margin-top: 10px;
+                                        ">
+                                      Thank you for your order
+                                    </h1>
+                                  </td>
+                                </tr>
+                                <tr class="lead-wrap" style="text-align: center; width: 100%">
+                                  <td class="lead" style="
+                                        font-family: Helvetica, sans-serif;
+                                        text-align: center;
+                                        border-collapse: collapse;
+                                        font-size: 18px;
+                                        letter-spacing: 0.045em;
+                                        line-height: 24px;
+                                        mso-line-height-rule: exactly;
+                                      ">
+                                    Hi {{name}},<br />Please find
+                                    your order summary below.
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="em-spacer-1" style="height: 26px"></td>
+                                </tr>
+                                <tr>
+                                  <td class="order-link-wrap" style="
+                                        text-align: center;
+                                        font-size: 14px;
+                                      ">
+                                    <strong>
+                                      Order:
+                                      <a href="#" style="color: #0047be" target="_blank">{{orderNumber}}</a>
+                                      <span class="pipe"> | </span>
+                                      Date ordered: {{dateOrdered}}
+                                    </strong>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="em-spacer-1" style="height: 26px"></td>
+                                </tr>
+                                <tr>
+                                  <td class="em-spacer-2" style="height: 52px"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px"></td>
+                </tr>
+                <tr>
+                  <td class="box box-ext order-summary-box" style="
+                        background: #fff;
+                        padding: 0 25px;
+                        text-align: center;
+                      ">
+                    <table class="two-col ledger" style="
+                          margin: 0 auto;
+                          font-size: 14px;
+                          line-height: 22px;
+                          width: 546px;
+                          text-align: left;
+                        ">
+                      <tbody>
+                        <tr>
+                          <td class="em-spacer-1" style="height: 26px"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table align="left" class="column column-1" style="margin: 0 auto; width: 100%">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <strong class="title" style="
+                                          text-transform: uppercase;
+                                          display: block;
+                                          margin-bottom: 5px;
+                                        ">
+                                      Delivery Address
+                                    </strong>
+                                    {{address}}, {{state}}, {{country}}
+                                    <br />
+                                    {{phoneNumber}}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-1" style="height: 26px"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table class="order-summary" style="
+                          margin: 0 auto;
+                          text-align: left;
+                          width: 546px;
+                          border-top: 2px solid #eee;
+                        ">
+                      <tbody>
+                        <tr>
+                          <td class="em-spacer-0" style="height: 20px"></td>
+                        </tr>
+
+                        {{#each lineItems}}
+                        <tr class="line-item">
+                          <td class="line-item product-thumb-column" style="width: 80px">
+                            <img alt="product-img" class="product-thumb" height="80" width="80" src={{this.image}}
+                              style="object-fit: cover" />
+                            <div class="row-spacer" style="height: 8px"></div>
+                          </td>
+                          <td class="line-item product-info-column" style="width: 200px">
+                            <div class="title" style="margin-bottom: 5px">
+                              {{this.name}}
+                            </div>
+                            <div class="sub" style="font-size: 13px; margin-bottom: 3px">
+                              {{this.category}}
+                            </div>
+                            <div class="sub" style="font-size: 13px; margin-bottom: 3px">
+                              Qty: {{this.quantity}}
+                            </div>
+                          </td>
+                          <td class="line-item product-price-column" style="
+                                width: 100px;
+                                text-align: right;
+                                vertical-align: top;
+                              ">
+                            <div class="sub price" style="
+                                  font-size: 13px;
+                                  margin-bottom: 3px;
+                                  margin-top: 18px;
+                                ">
+                              ₦{{this.price}}
+                            </div>
+                          </td>
+                        </tr>
+                        {{/each}}
+
+                        <tr>
+                          <td class="em-spacer-0" style="height: 20px"></td>
+                        </tr>
+                        <tr>
+                          <td class="divider" colspan="3" style="border-bottom: 2px solid #eee"></td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-1" style="height: 26px"></td>
+                        </tr>
+                        <tr class="total-row" style="font-size: 14px">
+                          <td class="copy" colspan="2" style="text-align: right">
+                            Subtotal
+                          </td>
+                          <td class="value" style="text-align: right">
+                            ₦{{subtotal}}
+                          </td>
+                        </tr>
+                        <tr class="total-row" style="font-size: 14px">
+                          <td class="copy" colspan="2" style="text-align: right">
+                            Gift Code
+                          </td>
+                          <td class="value" style="text-align: right">
+                            -₦{{discount}}
+                          </td>
+                        </tr>
+                        <tr class="total-row" style="font-size: 14px">
+                          <td class="copy" colspan="2" style="text-align: right">
+                            Shipping
+                          </td>
+                          <td class="value" style="text-align: right">
+                            ₦{{deliveryFee}}
+                          </td>
+                        </tr>
+                        <tr class="total-row total" style="font-size: 14px">
+                          <td class="copy" colspan="2" style="text-align: right; padding-top: 10px">
+                            <strong> Total </strong>
+                          </td>
+                          <td class="value" style="text-align: right; padding-top: 10px">
+                            <strong> ₦{{total}} </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-0" style="height: 20px"></td>
+                        </tr>
+                        <tr>
+                          <td class="divider" colspan="3" style="border-bottom: 2px solid #eee"></td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-2" style="height: 52px"></td>
+                        </tr>
+
+                        <tr align="center">
+                          <td class="lead secondary" colspan="3" style="
+                                font-family: Helvetica, sans-serif;
+                                text-align: center;
+                                border-collapse: collapse;
+                                font-size: 14px;
+                                letter-spacing: 0.045em;
+                                line-height: 24px;
+                                mso-line-height-rule: exactly;
+                                width: 100%;
+                              ">
+                            Items in your order may ship separately.<br />View
+                            <a href="#" target="_blank">your order</a>
+                            for shipping updates.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-2" style="height: 52px"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="em-spacer-1" style="height: 26px"></td>
+                </tr>
+                <tr>
+                  <td class="box box-ext cx-info-box" style="
+                        background: #c56439;
+                        padding: 0 25px;
+                        text-align: center;
+                        color: #fff;
+                      ">
+                    <table class="info-cta" style="margin: 0 auto">
+                      <tbody>
+                        <tr>
+                          <td class="em-spacer-5" style="height: 32px; text-align: center"></td>
+                        </tr>
+                        <tr>
+                          <td class="title" style="
+                                text-align: center;
+                                font-weight: 700;
+                                text-transform: uppercase;
+                                font-size: 19px;
+                                padding-bottom: 18px;
+                              ">
+                            Questions? We're on call.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="info" style="text-align: center">
+                            Monday to Friday 9am - 5pm
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="info" style="text-align: center">
+                            Saturday to Sunday 10am - 6pm
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="links" style="text-align: center; padding-top: 20px">
+                            08108877482
+                            <span class="pipe"> &nbsp;|&nbsp; </span>
+                            marketing@strands.com.ng
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="em-spacer-5" style="height: 32px; text-align: center"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="margin: 0 auto">
+              <tbody>
+                <tr>
+                  <td class="em-spacer-2" style="height: 52px"></td>
+                </tr>
+                <tr>
+                  <td class="footer footer-1" style="color: #999; font-size: 13px">
+                    08108877482
+                    <span class="pipe"> &nbsp;|&nbsp; </span>
+                    marketing@strands.com.ng
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" class="footer footer-2" style="color: #999; font-size: 13px">
+                    <table class="footer-icons" style="margin: 20px auto; width: 153px">
+                      <tbody>
+                        <tr>
+                          <td class="footer-icon">
+                            <a href="https://www.instagram.com/strands_ng/" target="_blank" style="color: #0047be">
+                              <img
+                                src="https://res.cloudinary.com/strands-cloudinary/image/upload/v1616423473/strands-assets/instagram-104_cbgrro.png"
+                                width="32" height="32" />
+                            </a>
+                          </td>
+                          <td class="footer-icon">
+                            <a href="https://strands.com.ng/" target="_blank" style="color: #0047be">
+                              <img
+                                src="https://res.cloudinary.com/strands-cloudinary/image/upload/v1616423473/strands-assets/twitter-96_e0kqqc.png"
+                                width="32" height="32" />
+                            </a>
+                          </td>
+                          <td class="footer-icon">
+                            <a href="https://web.facebook.com/Strands_ng-103328295135202?_rdc=1&_rdr" target="_blank"
+                              style="color: #0047be">
+                              <img
+                                src="https://res.cloudinary.com/strands-cloudinary/image/upload/v1616423473/strands-assets/facebook-96_kokaay.png"
+                                width="32" height="32" />
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table style="margin: 0 auto">
+      <tbody>
+        <tr>
+          <td class="copyright-footer" style="
+                padding-top: 15px;
+                padding-bottom: 20px;
+                font-size: 11px;
+                color: #b2b2b2;
+              ">
+            5/7 Peter Ujomu close, Seaside Estate, Badore, Ajah, Lagos
+            <span class="pipe"> &nbsp;|&nbsp; </span> Strands.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- class content -->
+  </body>
+</body>
+
+</html>

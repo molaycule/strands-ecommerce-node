@@ -25,6 +25,8 @@
     "@keystonejs/keystone": "^19.2.0",
     "@keystonejs/list-plugins": "^8.1.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "handlebars": "^4.7.7",
+    "node-mailjet": "^3.3.1"
   }
 }
