@@ -19,9 +19,10 @@ const ProductSchema = (access, fileAdapter) => ({
       defaultValue: 0,
       isRequired: true
     },
-    isAvailable: {
-      type: Checkbox,
-      defaultValue: true
+    quantityInStock: {
+      type: Float,
+      defaultValue: 0,
+      isRequired: true
     },
     category: {
       type: Relationship,
