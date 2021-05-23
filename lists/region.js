@@ -1,11 +1,16 @@
-const { Text } = require('@keystonejs/fields');
+const { Text, Float } = require('@keystonejs/fields');
 const { atTracking } = require('@keystonejs/list-plugins');
 
-const CountrySchema = access => ({
+const RegionSchema = access => ({
   fields: {
     name: {
       type: Text,
       isUnique: true,
+      isRequired: true
+    },
+    fee: {
+      type: Float,
+      defaultValue: 0,
       isRequired: true
     }
   },
@@ -20,4 +25,4 @@ const CountrySchema = access => ({
   plugins: [atTracking()]
 });
 
-module.exports = CountrySchema;
+module.exports = RegionSchema;

@@ -3,8 +3,8 @@ const TopCategorySchema = require('./topCategory');
 const ProductSchema = require('./product');
 const UserSchema = require('./user');
 const BannerAdSchema = require('./bannerAd');
-const DeliveryFeeSchema = require('./deliveryFee');
-const CountrySchema = require('./country');
+const AreaSchema = require('./area');
+const RegionSchema = require('./region');
 const OrderSchema = require('./order');
 const LineItemSchema = require('./lineItem');
 
@@ -14,8 +14,8 @@ module.exports = {
   ProductSchema,
   UserSchema,
   BannerAdSchema,
-  DeliveryFeeSchema,
-  CountrySchema,
+  AreaSchema,
+  RegionSchema,
   OrderSchema,
   LineItemSchema
 };

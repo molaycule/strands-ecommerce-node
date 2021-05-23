@@ -1,26 +1,17 @@
-const { Text, Float, Checkbox, Relationship } = require('@keystonejs/fields');
+const { Text, Relationship } = require('@keystonejs/fields');
 const { atTracking } = require('@keystonejs/list-plugins');
 
-const DeliveryFeeSchema = access => ({
+const AreaSchema = access => ({
   fields: {
-    country: {
+    region: {
       type: Relationship,
-      ref: 'Country',
+      ref: 'Region',
       many: false
     },
-    state: {
+    area: {
       type: Text,
       isUnique: true,
       isRequired: true
-    },
-    fee: {
-      type: Float,
-      defaultValue: 0,
-      isRequired: true
-    },
-    isDeliveryAllowed: {
-      type: Checkbox,
-      defaultValue: true
     }
   },
   // List-level access controls
@@ -34,4 +25,4 @@ const DeliveryFeeSchema = access => ({
   plugins: [atTracking()]
 });
 
-module.exports = DeliveryFeeSchema;
+module.exports = AreaSchema;

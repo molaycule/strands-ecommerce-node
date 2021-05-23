@@ -77,7 +77,7 @@ const ProductSchema = (access, fileAdapter) => ({
   // List-level access controls
   access: {
     read: true,
-    update: access.userIsAdminOrOwner,
+    update: true,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
     auth: true

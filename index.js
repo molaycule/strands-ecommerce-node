@@ -10,8 +10,8 @@ const {
   ProductSchema,
   UserSchema,
   BannerAdSchema,
-  DeliveryFeeSchema,
-  CountrySchema,
+  AreaSchema,
+  RegionSchema,
   OrderSchema,
   LineItemSchema
 } = require('./lists/index');
@@ -63,8 +63,8 @@ keystone.createList('Product', ProductSchema(access, fileAdapter));
 keystone.createList('Category', CategorySchema(access));
 keystone.createList('TopCategory', TopCategorySchema(access, fileAdapter));
 keystone.createList('BannerAd', BannerAdSchema(access, fileAdapter));
-keystone.createList('DeliveryFee', DeliveryFeeSchema(access));
-keystone.createList('Country', CountrySchema(access));
+keystone.createList('Area', AreaSchema(access));
+keystone.createList('Region', RegionSchema(access));
 keystone.createList('Order', OrderSchema());
 keystone.createList('LineItem', LineItemSchema());
 

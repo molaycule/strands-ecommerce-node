@@ -29,11 +29,11 @@ const OrderSchema = () => ({
       type: Text,
       isRequired: true
     },
-    state: {
+    area: {
       type: Text,
       isRequired: true
     },
-    country: {
+    region: {
       type: Text,
       isRequired: true
     },
@@ -87,8 +87,7 @@ const OrderSchema = () => ({
         name: originalInput.name,
         dateOrdered: new Date().toLocaleDateString(),
         address: originalInput.address,
-        state: originalInput.state,
-        country: originalInput.country,
+        area: originalInput.area,
         phoneNumber: originalInput.phoneNumber,
         lineItems: originalInput.lineItems.create.map(item => ({
           ...item,
